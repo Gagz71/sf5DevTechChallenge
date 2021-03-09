@@ -14,24 +14,34 @@
 
 	<!-- Main section -->
 	<main>
+
+		<!--Affichage message de succès-->
+		{% for message in app.flashes('success') %}
+			<div class="row">
+				<div class="m-auto alert alert-success" role="alert">{{ message }}</div>
+			</div>
+		{% endfor %}
+
+		<!--Ajout d'un membre-->
 		<div class="row mt-5">
 			<div class="col-12 text-center">
 				<h2 class="add-title">Ajouter un(e) Argonaute</h2>
 			</div>
 
-			<div class="col-12 text-center mt-5">
+			<div class=" d-flex flex-column col-5 text-center m-auto pt-5 ">
 				<!--affichage du formulaire créer avec symfony-->
-				{{ form(form) }}
+				{{ form_start(form) }}
+				{{ form_row(form.name) }}
+				{{ form_row(form.submit) }}
+				{{ form_end(form) }}
 			</div>
 		</div>
-{#		<!-- New member form -->#}
-{#		<h2>Ajouter un(e) Argonaute</h2>#}
-{#		<form class="new-member-form">#}
-{#			<label for="name">Nom de l&apos;Argonaute</label>#}
-{#			<input id="name" name="name" type="text" placeholder="Charalampos" />#}
-{#			<button type="submit">Envoyer</button>#}
-{#		</form>#}
-
+		<!--Affichage des membres de l'équipage-->
+		<div class="row mt-5">
+			<div class="col-12 text-center">
+				<h2 class="title-member-list">Membres de l'équipage</h2>
+			</div>
+		</div>
 {#		<!-- Member list -->#}
 {#		<h2>Membres de l'équipage</h2>#}
 {#		<section class="member-list">#}

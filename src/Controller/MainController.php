@@ -28,6 +28,18 @@ class MainController extends AbstractController
     	//Création du formulaire d'ajout des membres de l'équipage
     	$form = $this->createForm(AddMembersType::class, $member);
     	$form->handleRequest($request);
+    	
+    	//Si le formulaire est soumis et valide
+    	if($form->isSubmitted() && $form->isValid()){
+    		//Hydratation du nouveau membre
+    		$member->setRegisterDate(new  \DateTime());
+    		//enregistrement en BDD
+	        $this->entityManager->persist($member);
+	        $this->entityManager->flush();
+	        
+	        //Création d'une notification de succès
+	        $this->addFlash('success', 'Le nouveau membre de votre équipage a bien été enregistré !');
+        }
 
         return $this->render('main/index.html.twig', [
         	'form' => $form->createView()

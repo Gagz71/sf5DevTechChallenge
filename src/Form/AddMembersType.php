@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class AddMembersType extends AbstractType
 {
@@ -24,15 +25,18 @@ class AddMembersType extends AbstractType
 	            	new Length([
 	            		'min' => 2,
 		                'max' => 50, //Max conseillé par Symfony
-		                'minMessage' =>  'Veuillez saisir un prénom qui contient au minimum {{ limit }} caractères',
-		                'maxMessage' => 'Veuillez saisir un prénom qui contient au maximum {{ limit }} caractères',
+		                'minMessage' =>  'Veuillez saisir un nom qui contient au minimum {{ limit }} caractères',
+		                'maxMessage' => 'Veuillez saisir un nom qui contient au maximum {{ limit }} caractères',
 	                ]),
+		            new NotBlank([
+			            'message' => 'Veuillez saisir un nom à ajouter'
+		            ])
 	            ],
             ])
             ->add('submit', SubmitType::class, [
             	'label' => 'Ajouter',
 	            'attr' => [
-	            	'class' => 'btn btn-outline-primary'
+	            	'class' => 'btn-block btn-outline-primary'
 	            ]
             ])
         ;
