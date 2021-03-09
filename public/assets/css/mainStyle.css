@@ -1,3 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap'); /*Déclarations police d'écriture*/
+@font-face {
+	font-family: "Dalek";
+	src: url("../fonts/Dalek.ttf");
+}
+@font-face {
+	font-family: "Diogenes";
+	src: url("../fonts/DIOGENES.ttf");
+}
+@font-face {
+	font-family: "Basileus";
+	src: url("../fonts/BASILEUS.ttf");
+}
+
 header {
 	background: #f4f4f4;
 	text-align: center;
@@ -8,8 +22,13 @@ header img {
 	max-width: 96px;
 }
 
-header h1 {
+.main-title {
 	font-size: 2.5em;
+	font-family: "Dalek", sans-serif;
+}
+
+.add-title{
+	font-family: 'Roboto', sans-serif;
 }
 
 footer {
@@ -18,4 +37,7 @@ footer {
 	color: #fff;
 	background: #f76c6c;
 	padding: 0.25em 0;
+}
+.footer-credits{
+	font-family: "Diogenes", sans-serif;
 }

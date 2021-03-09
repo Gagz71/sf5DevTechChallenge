@@ -5,7 +5,7 @@
 {% block body %}
 	<!-- Header section -->
 	<header>
-		<h1>
+		<h1 class="main-title">
 			<img src="https://www.wildcodeschool.com/assets/logo_main-e4f3f744c8e717f1b7df3858dce55a86c63d4766d5d9a7f454250145f097c2fe.png" alt="Wild Code School logo" />
 			Les Argonautes
 		</h1>
@@ -14,6 +14,16 @@
 
 	<!-- Main section -->
 	<main>
+		<div class="row mt-5">
+			<div class="col-12 text-center">
+				<h2 class="add-title">Ajouter un(e) Argonaute</h2>
+			</div>
+
+			<div class="col-12 text-center mt-5">
+				<!--affichage du formulaire créer avec symfony-->
+				{{ form(form) }}
+			</div>
+		</div>
 {#		<!-- New member form -->#}
 {#		<h2>Ajouter un(e) Argonaute</h2>#}
 {#		<form class="new-member-form">#}
@@ -33,7 +43,7 @@
 
 
 	<footer>
-		<p>Réalisé par Jason en Anthestérion de l'an 515 avant JC</p>
+		<p class="footer-credits">Réalisé par Jason en Anthestérion de l'an 515 avant JC</p>
 	</footer>
 
 {% endblock %}
