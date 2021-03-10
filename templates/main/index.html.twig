@@ -50,23 +50,19 @@
 				{% else %}
 			</div>
 
-			<div class="row d-flex mt-5 ">
-				{% for member in members %}
-					<div class="col-sm-4 text-center">
-						<p>{{ member.name }}</p>
-						<p class="small">Ajouté le {{ member.registerDate|date('d/m/Y') }}</p>
-					</div>
-				{% endfor %}
+			<div class="container  mt-5 ">
+				<div class="row row-cols-3">
+					{% for member in members %}
+						<div class="col text-center">
+							<p>{{ member.name }}</p>
+							<p class="small">Ajouté le {{ member.registerDate|date('d/m/Y') }}</p>
+
+						</div>
+					{% endfor %}
+				</div>
+
 			</div>
 				{% endif %}
-
-			{#		<!-- Member list -->#}
-			{#		<h2>Membres de l'équipage</h2>#}
-			{#		<section class="member-list">#}
-			{#			<div class="member-item">Eleftheria</div>#}
-			{#			<div class="member-item">Gennadios</div>#}
-			{#			<div class="member-item">Lysimachos</div>#}
-			{#		</section>#}
 		</div>
 
 
