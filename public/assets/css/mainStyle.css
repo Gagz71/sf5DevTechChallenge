@@ -31,6 +31,14 @@ header img {
 	font-family: 'Roboto', sans-serif;
 }
 
+.bg-members-list{
+	background-image: url("../img/pexels-pixabay-235985.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	height: 100%;
+
+}
+
 footer {
 	margin-top: 2em;
 	text-align: center;

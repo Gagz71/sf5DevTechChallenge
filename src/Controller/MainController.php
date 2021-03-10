@@ -31,14 +31,25 @@ class MainController extends AbstractController
     	
     	//Si le formulaire est soumis et valide
     	if($form->isSubmitted() && $form->isValid()){
-    		//Hydratation du nouveau membre
-    		$newMember->setRegisterDate(new  \DateTime());
-    		//enregistrement en BDD
-	        $this->entityManager->persist($newMember);
-	        $this->entityManager->flush();
-	        
-	        //Création d'une notification de succès
-	        $this->addFlash('success', 'Le nouveau membre de votre équipage a bien été enregistré !');
+    		
+    		//Récupération du nom saisi
+    		$newMember = $form->getData();
+    		$search_name = $this->entityManager->getRepository(Member::class)->findOneByName($newMember->getName());
+    		//Si le nom n'existe pas déjà en BDD
+	        if(!$search_name){
+		        //Hydratation du nouveau membre
+		        $newMember->setRegisterDate(new  \DateTime());
+		        //enregistrement en BDD
+		        $this->entityManager->persist($newMember);
+		        $this->entityManager->flush();
+		
+		        //Création d'une notification de succès
+		        $this->addFlash('success', 'Le nouveau membre de votre équipage a bien été enregistré !');
+	        } else{
+	        	$this->addFlash('error', 'Ce membre a déjà été ajouté. ');
+	        }
+    		
+    		
         }
     	
     	$members = $this->entityManager->getRepository(Member::class)->findAll();

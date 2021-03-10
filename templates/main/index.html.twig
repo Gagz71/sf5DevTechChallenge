@@ -22,6 +22,12 @@
 					<div class="m-auto alert alert-success" role="alert">{{ message }}</div>
 				</div>
 			{% endfor %}
+			<!--Affichage message d'erreur-->
+			{% for message in app.flashes('error') %}
+				<div class="row">
+					<div class="m-auto alert alert-danger" role="alert">{{ message }}</div>
+				</div>
+			{% endfor %}
 
 			<!--Ajout d'un membre-->
 			<div class="row mt-5">
@@ -37,33 +43,36 @@
 					{{ form_end(form) }}
 				</div>
 			</div>
-			<!--Affichage des membres de l'équipage-->
-			<div class="row mt-5">
-				<div class="col-12 text-center">
-					<h2 class="title-member-list">Membres de l'équipage</h2>
-				</div>
 
-				{% if members is empty %}
+			<div class="bg-members-list">
+				<!--Affichage des membres de l'équipage-->
+				<div class="row mt-5">
+					<div class="col-12 text-center">
+						<h2 class="title-member-list">Membres de l'équipage</h2>
+					</div>
+
+					{% if members is empty %}
 					<div class="row">
 						<p class="col-12 text-center alert alert-warning">Aucun article à afficher.</p>
 					</div>
-				{% else %}
-			</div>
-
-			<div class="container  mt-5 ">
-				<div class="row row-cols-3">
-					{% for member in members %}
-						<div class="col text-center">
-							<p>{{ member.name }}</p>
-							<p class="small">Ajouté le {{ member.registerDate|date('d/m/Y') }}</p>
-
-						</div>
-					{% endfor %}
+					{% else %}
 				</div>
 
-			</div>
+				<div class="container  mt-5 ">
+					<div class="row row-cols-3">
+						{% for member in members %}
+							<div class="col text-center">
+								<p>{{ member.name }}</p>
+								<p class="small">Ajouté le {{ member.registerDate|date('d/m/Y') }}</p>
+
+							</div>
+						{% endfor %}
+					</div>
+				</div>
 				{% endif %}
+			</div>
 		</div>
+
 
 
 	</main>
