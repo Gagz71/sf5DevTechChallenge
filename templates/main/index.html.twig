@@ -46,14 +46,15 @@
 
 			<div class="bg-members-list">
 				<!--Affichage des membres de l'équipage-->
-				<div class="row mt-5">
-					<div class="col-12 text-center">
+				<div class="row mt-5 pt-5">
+					<div class="col-12 mt-5 text-center">
 						<h2 class="title-member-list">Membres de l'équipage</h2>
+						<p class="nb-members-list">{{ members|length }} membres actuellement enregistrés.</p>
 					</div>
 
 					{% if members is empty %}
 					<div class="row">
-						<p class="col-12 text-center alert alert-warning">Aucun article à afficher.</p>
+						<p class="col-12 text-center alert alert-warning">Vous n'avez encore ajouté aucun membres à votre équipage.</p>
 					</div>
 					{% else %}
 				</div>
@@ -61,10 +62,9 @@
 				<div class="container  mt-5 ">
 					<div class="row row-cols-3">
 						{% for member in members %}
-							<div class="col text-center">
-								<p>{{ member.name }}</p>
+							<div class="col text-center members-list">
+								<p class="members-list-name">{{ member.name }}</p>
 								<p class="small">Ajouté le {{ member.registerDate|date('d/m/Y') }}</p>
-
 							</div>
 						{% endfor %}
 					</div>

@@ -28,16 +28,20 @@ class MainController extends AbstractController
     	//Création du formulaire d'ajout des membres de l'équipage
     	$form = $this->createForm(AddMembersType::class, $newMember);
     	$form->handleRequest($request);
+	
+    	//récupération de tous les membres enregistrés en BDD
+        $members = $this->entityManager->getRepository(Member::class)->findAll();
     	
     	//Si le formulaire est soumis et valide
     	if($form->isSubmitted() && $form->isValid()){
     		
-    		//Récupération du nom saisi
+    		//Récupération du nom saisi dans le formulaire
     		$newMember = $form->getData();
+    		//Récupération de la liste de tout les membres déjà enregistré en BDD
     		$search_name = $this->entityManager->getRepository(Member::class)->findOneByName($newMember->getName());
     		//Si le nom n'existe pas déjà en BDD
-	        if(!$search_name){
-		        //Hydratation du nouveau membre
+	        if(!$search_name) {
+		        //Hydratation de la date d'ajout du nouveau membre
 		        $newMember->setRegisterDate(new  \DateTime());
 		        //enregistrement en BDD
 		        $this->entityManager->persist($newMember);
@@ -46,13 +50,14 @@ class MainController extends AbstractController
 		        //Création d'une notification de succès
 		        $this->addFlash('success', 'Le nouveau membre de votre équipage a bien été enregistré !');
 	        } else{
+	        	//Création notification d'erreur
 	        	$this->addFlash('error', 'Ce membre a déjà été ajouté. ');
 	        }
     		
     		
         }
     	
-    	$members = $this->entityManager->getRepository(Member::class)->findAll();
+    	
 
         return $this->render('main/index.html.twig', [
         	'form' => $form->createView(),

@@ -8,8 +8,8 @@
 	src: url("../fonts/DIOGENES.ttf");
 }
 @font-face {
-	font-family: "Basileus";
-	src: url("../fonts/BASILEUS.ttf");
+	font-family: "PackardAntique";
+	src: url("../fonts/PackardAntique.ttf");
 }
 
 header {
@@ -32,11 +32,24 @@ header img {
 }
 
 .bg-members-list{
-	background-image: url("../img/pexels-pixabay-235985.jpg");
+	background-image: url("../img/paper-3653357.jpg");
 	background-size: cover;
 	background-repeat: no-repeat;
 	height: 100%;
-
+}
+.title-member-list{
+	font-family: "PackardAntique", sans-serif;
+	text-transform: uppercase;
+}
+.nb-members-list{
+	font-family: "PackardAntique", sans-serif;
+}
+.members-list{
+	font-family: "PackardAntique", sans-serif;
+}
+.members-list-name{
+	font-size: 1.3em;
+	margin-bottom: 0;
 }
 
 footer {
