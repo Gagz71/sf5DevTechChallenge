@@ -12,6 +12,18 @@
 	src: url("../fonts/PackardAntique.ttf");
 }
 
+.overlay{
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: rgba(0, 0, 0, 0.6);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 header {
 	background: #f4f4f4;
 	text-align: center;
@@ -28,7 +40,8 @@ header img {
 }
 
 .add-title{
-	font-family: 'Roboto', sans-serif;
+	font-family: "PackardAntique", sans-serif;
+	text-transform: uppercase;
 }
 
 .bg-members-list{

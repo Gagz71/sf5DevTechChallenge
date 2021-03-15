@@ -9,6 +9,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 
 class MainController extends AbstractController
 {
@@ -34,7 +37,6 @@ class MainController extends AbstractController
     	
     	//Si le formulaire est soumis et valide
     	if($form->isSubmitted() && $form->isValid()){
-    		
     		//Récupération du nom saisi dans le formulaire
     		$newMember = $form->getData();
     		//Récupération de la liste de tout les membres déjà enregistré en BDD
@@ -47,12 +49,17 @@ class MainController extends AbstractController
 		        $this->entityManager->persist($newMember);
 		        $this->entityManager->flush();
 		
+		        
+		
 		        //Création d'une notification de succès
 		        $this->addFlash('success', 'Le nouveau membre de votre équipage a bien été enregistré !');
 	        } else{
 	        	//Création notification d'erreur
 	        	$this->addFlash('error', 'Ce membre a déjà été ajouté. ');
 	        }
+	        
+	        
+	        
     		
     		
         }
